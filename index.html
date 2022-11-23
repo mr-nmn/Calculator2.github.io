@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <div class="center">
+        <form name="forms">
+            <input type="text" id="display1" name="display">
+            <input type="text" id="display2" name="display">
+            <div class="buttons">
+                <input onclick="fn('7')" type="button" id="seven" value="7">
+                <input onclick="fn('8')" type="button" id="eight" value="8">
+                <input onclick="fn('9')" type="button" id="nine" value="9">
+                <input onclick="Operator('/')" type="button" id="divide" value="/"><br>
+                <input onclick="fn('4')" type="button" id="four" value="4">
+                <input onclick="fn('5')" type="button" id="five" value="5">
+                <input onclick="fn('6')" type="button" id="six" value="6">
+                <input onclick="Operator('*')" type="button" id="multi" value="*"><br>
+                <input onclick="fn('1')" type="button" id="one" value="1">
+                <input onclick="fn('2')" type="button" id="two" value="2">
+                <input onclick="fn('3')" type="button" id="three" value="3">
+                <input onclick="Operator('-')" type="button" id="subs" value="-"><br>
+                <input onclick="fn('.')" type="button" id="dot" value=".">
+                <input onclick="fn('0')" type="button" id="zero" value="0">
+                <input onclick="Operator('+')" type="button" id="add" value="+">
+                <input onclick="clr()" type="button" id="clear" value="C"><br>
+                <input onclick="output()" type="button" id="equal" value="=">
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <script>
+        document.getElementById("display1").value = 0;
+        var numberStore;
+        function fn(a) {
+            if (document.getElementById("display1").value == 0) {
+                document.getElementById("display1").value = a;
+            } else {
+                document.getElementById("display1").value += a;
+            }
+            if (document.getElementById("display2").value != "") {
+                document.getElementById("display1").value = "";
+                document.getElementById("display2").value = "";
+                document.getElementById("display1").value += a;
+            }
+        }
+        var c = 0;
+        var op2;
+        function Operator(b) {
+            document.getElementById("display2").value = b;
+            op2 = b;
+            numberStore = document.getElementById("display1").value;
+        }
+        function output() {
+            if (op2 == "+") {
+                document.getElementById("display1").value =
+                    Number(numberStore) + Number(document.getElementById("display1").value);
+            }
+            if (op2 == "-") {
+                document.getElementById("display1").value =
+                    Number(numberStore) - Number(document.getElementById("display1").value);
+            }
+
+            if (op2 == "*") {
+                document.getElementById("display1").value =
+                    Number(numberStore) * Number(document.getElementById("display1").value);
+            }
+        }
+        function clr() {
+            document.getElementById("display1").value = 0;
+            document.getElementById("display2").value = "";
+            op2 = "";
+        }
+    </script>
+</body>
+
+</html>

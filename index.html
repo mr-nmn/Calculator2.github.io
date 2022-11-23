@@ -44,7 +44,8 @@
         function fn(a) {
             if (document.getElementById("display1").value == 0) {
                 document.getElementById("display1").value = a;
-            } else {
+            } 
+            else {
                 document.getElementById("display1").value += a;
             }
             if (document.getElementById("display2").value != "") {
@@ -73,6 +74,10 @@
             if (op2 == "*") {
                 document.getElementById("display1").value =
                     Number(numberStore) * Number(document.getElementById("display1").value);
+            }
+            if (op2 == "/") {
+                document.getElementById("display1").value =
+                    Number(numberStore) / Number(document.getElementById("display1").value);
             }
         }
         function clr() {
